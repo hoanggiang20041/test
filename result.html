@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Kết quả bài thi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .result-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+            flex: 1;
+            text-align: center; /* Canh giữa nội dung */
+        }
+        .result-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .result-container p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .result-container .correct-count {
+            font-size: 45px;
+            font-weight: bold;
+            color: #ff0000; /* Màu đỏ */
+        }
+        .question {
+            margin-bottom: 20px;
+            text-align: left; /* Căn trái nội dung câu hỏi */
+            max-width: 800px; /* Giới hạn chiều rộng câu hỏi */
+            margin: auto; /* Canh giữa câu hỏi */
+        }
+        .question p {
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .footer {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            color: #333;
+            border-top: 1px solid #ddd;
+        }
+        .certificate-button, .home-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .certificate-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .home-button {
+            background-color: #28a745; /* Màu xanh lá */
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Kết quả bài thi</h1>
+        <p class="correct-count">Số câu đúng: <span id="correctCount">0</span>/10</p>
+        
+        <!-- Danh sách câu hỏi và đáp án -->
+        <div class="question">
+            <p>Câu 1: Năm nào Hồ Chí Minh ra đi tìm đường cứu nước?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">A. 1911</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 2: Cuộc kháng chiến chống Pháp lần thứ nhất bắt đầu vào năm nào?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">A. 1858</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 3: Ai là người đầu tiên đặt chân đến Việt Nam vào thế kỷ 16?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">A. Ferdinand Magellan</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 4: Ai là tác giả của "Hịch tướng sĩ"?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">A. Trần Hưng Đạo</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 5: Năm nào Việt Nam giành được độc lập từ Pháp?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">B. 1954</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 6: Đâu là sự kiện khởi đầu của cuộc kháng chiến chống Mỹ cứu nước?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">A. Cuộc tấn công vào căn cứ quân sự Mỹ ở Đà Nẵng</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 7: Ai là nhân vật chính trong cuộc kháng chiến chống quân Nguyên Mông lần thứ nhất?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">C. Trần Hưng Đạo</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 8: Ai là người sáng lập ra Đảng Cộng sản Việt Nam?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">A. Hồ Chí Minh</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 9: Địa điểm diễn ra trận Điện Biên Phủ?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">A. Tây Bắc</span></p>
+        </div>
+        <div class="question">
+            <p>Câu 10: Ai là nhân vật lãnh đạo phong trào Cần Vương?</p>
+            <p class="answer">Đáp án đúng: <span class="correct">B. Tôn Thất Thuyết</span></p>
+        </div>
+
+        <!-- Nút nhận chứng chỉ -->
+        <button id="certificateButton" class="certificate-button" disabled>Nhận chứng chỉ</button>
+
+        <!-- Nút quay về trang chủ -->
+        <button class="home-button" onclick="window.location.href='home.html'">Về Trang Chủ</button>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Design by GKNM</p>
+        </div>
+    </div>
+
+    <script>
+        // Lấy dữ liệu từ URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var correctCount = parseInt(urlParams.get('correct'), 10);
+
+        // Hiển thị số câu đúng
+        document.getElementById('correctCount').textContent = correctCount;
+
+        // Kích hoạt nút nhận chứng chỉ nếu số câu đúng >= 8
+        var certificateButton = document.getElementById('certificateButton');
+        if (correctCount >= 8) {
+            certificateButton.disabled = false;
+            certificateButton.addEventListener('click', function() {
+                window.location.href = 'chungchi.html'; // Đường dẫn đến trang chứng chỉ
+            });
+        } else {
+            certificateButton.disabled = true;
+            certificateButton.addEventListener('click', function() {
+                alert('Bạn chưa đủ chỉ tiêu điểm đạt được để nhận chứng chỉ');
+            });
+        }
+    </script>
+</body>
+</html>

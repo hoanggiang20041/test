@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Thi Lịch sử</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+            flex: 1;
+            text-align: center;
+        }
+        .quiz-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .question p {
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .answers input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .message {
+            display: none;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            font-size: 16px;
+        }
+        .footer {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            color: #333;
+            border-top: 1px solid #ddd;
+        }
+        .timer {
+            font-size: 30px;
+            margin: 20px 0;
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Thi Lịch sử</h1>
+        <p id="username">Tên người dùng: <strong>NguyenHoangGiang</strong></p>
+        <div id="timer" class="timer">00:30</div>
+        <form id="quizForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <p>Câu hỏi 1: Năm nào Hồ Chí Minh ra đi tìm đường cứu nước?</p>
+                <div class="answers">
+                    <input type="radio" id="q1a" name="q1" value="A">
+                    <label for="q1a">A. 1911</label><br>
+                    <input type="radio" id="q1b" name="q1" value="B">
+                    <label for="q1b">B. 1912</label><br>
+                    <input type="radio" id="q1c" name="q1" value="C">
+                    <label for="q1c">C. 1913</label><br>
+                    <input type="radio" id="q1d" name="q1" value="D">
+                    <label for="q1d">D. 1914</label>
+                </div>
+            </div>
+            <!-- Question 2 -->
+            <div class="question">
+                <p>Câu hỏi 2: Cuộc kháng chiến chống Pháp lần thứ nhất bắt đầu vào năm nào?</p>
+                <div class="answers">
+                    <input type="radio" id="q2a" name="q2" value="A">
+                    <label for="q2a">A. 1858</label><br>
+                    <input type="radio" id="q2b" name="q2" value="B">
+                    <label for="q2b">B. 1884</label><br>
+                    <input type="radio" id="q2c" name="q2" value="C">
+                    <label for="q2c">C. 1945</label><br>
+                    <input type="radio" id="q2d" name="q2" value="D">
+                    <label for="q2d">D. 1954</label>
+                </div>
+            </div>
+            <!-- Question 3 -->
+            <div class="question">
+                <p>Câu hỏi 3: Ai là người đầu tiên đặt chân đến Việt Nam vào thế kỷ 16?</p>
+                <div class="answers">
+                    <input type="radio" id="q3a" name="q3" value="A">
+                    <label for="q3a">A. Ferdinand Magellan</label><br>
+                    <input type="radio" id="q3b" name="q3" value="B">
+                    <label for="q3b">B. Vasco da Gama</label><br>
+                    <input type="radio" id="q3c" name="q3" value="C">
+                    <label for="q3c">C. Marco Polo</label><br>
+                    <input type="radio" id="q3d" name="q3" value="D">
+                    <label for="q3d">D. Christophe Colomb</label>
+                </div>
+            </div>
+            <!-- Question 4 -->
+            <div class="question">
+                <p>Câu hỏi 4: Ai là tác giả của "Hịch tướng sĩ"?</p>
+                <div class="answers">
+                    <input type="radio" id="q4a" name="q4" value="A">
+                    <label for="q4a">A. Trần Hưng Đạo</label><br>
+                    <input type="radio" id="q4b" name="q4" value="B">
+                    <label for="q4b">B. Lý Thường Kiệt</label><br>
+                    <input type="radio" id="q4c" name="q4" value="C">
+                    <label for="q4c">C. Nguyễn Trãi</label><br>
+                    <input type="radio" id="q4d" name="q4" value="D">
+                    <label for="q4d">D. Hồ Chí Minh</label>
+                </div>
+            </div>
+            <!-- Question 5 -->
+            <div class="question">
+                <p>Câu hỏi 5: Năm nào Việt Nam giành được độc lập từ Pháp?</p>
+                <div class="answers">
+                    <input type="radio" id="q5a" name="q5" value="A">
+                    <label for="q5a">A. 1945</label><br>
+                    <input type="radio" id="q5b" name="q5" value="B">
+                    <label for="q5b">B. 1954</label><br>
+                    <input type="radio" id="q5c" name="q5" value="C">
+                    <label for="q5c">C. 1975</label><br>
+                    <input type="radio" id="q5d" name="q5" value="D">
+                    <label for="q5d">D. 1980</label>
+                </div>
+            </div>
+            <!-- Question 6 -->
+            <div class="question">
+                <p>Câu hỏi 6: Đâu là sự kiện khởi đầu của cuộc kháng chiến chống Mỹ cứu nước?</p>
+                <div class="answers">
+                    <input type="radio" id="q6a" name="q6" value="A">
+                    <label for="q6a">A. Cuộc tấn công vào căn cứ quân sự Mỹ ở Đà Nẵng</label><br>
+                    <input type="radio" id="q6b" name="q6" value="B">
+                    <label for="q6b">B. Vụ tấn công vào sân bay Tân Sơn Nhất</label><br>
+                    <input type="radio" id="q6c" name="q6" value="C">
+                    <label for="q6c">C. Cuộc chiến tranh Đông Dương lần thứ hai</label><br>
+                    <input type="radio" id="q6d" name="q6" value="D">
+                    <label for="q6d">D. Chiến dịch Điện Biên Phủ</label>
+                </div>
+            </div>
+            <!-- Question 7 -->
+            <div class="question">
+                <p>Câu hỏi 7: Ai là nhân vật chính trong cuộc kháng chiến chống quân Nguyên Mông lần thứ nhất?</p>
+                <div class="answers">
+                    <input type="radio" id="q7a" name="q7" value="A">
+                    <label for="q7a">A. Trần Hưng Đạo</label><br>
+                    <input type="radio" id="q7b" name="q7" value="B">
+                    <label for="q7b">B. Lê Lợi</label><br>
+                    <input type="radio" id="q7c" name="q7" value="C">
+                    <label for="q7c">C. Nguyễn Trãi</label><br>
+                    <input type="radio" id="q7d" name="q7" value="D">
+                    <label for="q7d">D. Hồ Chí Minh</label>
+                </div>
+            </div>
+            <!-- Question 8 -->
+            <div class="question">
+                <p>Câu hỏi 8: Tuyên ngôn độc lập của Việt Nam được công bố vào ngày nào?</p>
+                <div class="answers">
+                    <input type="radio" id="q8a" name="q8" value="A">
+                    <label for="q8a">A. 2/9/1945</label><br>
+                    <input type="radio" id="q8b" name="q8" value="B">
+                    <label for="q8b">B. 1/9/1945</label><br>
+                    <input type="radio" id="q8c" name="q8" value="C">
+                    <label for="q8c">C. 3/9/1945</label><br>
+                    <input type="radio" id="q8d" name="q8" value="D">
+                    <label for="q8d">D. 4/9/1945</label>
+                </div>
+            </div>
+            <!-- Question 9 -->
+            <div class="question">
+                <p>Câu hỏi 9: Ai là Tổng Bí thư đầu tiên của Đảng Cộng sản Việt Nam?</p>
+                <div class="answers">
+                    <input type="radio" id="q9a" name="q9" value="A">
+                    <label for="q9a">A. Hồ Chí Minh</label><br>
+                    <input type="radio" id="q9b" name="q9" value="B">
+                    <label for="q9b">B. Trường Chinh</label><br>
+                    <input type="radio" id="q9c" name="q9" value="C">
+                    <label for="q9c">C. Lê Duẩn</label><br>
+                    <input type="radio" id="q9d" name="q9" value="D">
+                    <label for="q9d">D. Phạm Văn Đồng</label>
+                </div>
+            </div>
+            <!-- Question 10 -->
+            <div class="question">
+                <p>Câu hỏi 10: Đại hội Đảng Cộng sản Việt Nam lần thứ nhất được tổ chức ở đâu?</p>
+                <div class="answers">
+                    <input type="radio" id="q10a" name="q10" value="A">
+                    <label for="q10a">A. Hương Cảng</label><br>
+                    <input type="radio" id="q10b" name="q10" value="B">
+                    <label for="q10b">B. Hà Nội</label><br>
+                    <input type="radio" id="q10c" name="q10" value="C">
+                    <label for="q10c">C. Sài Gòn</label><br>
+                    <input type="radio" id="q10d" name="q10" value="D">
+                    <label for="q10d">D. Bắc Kinh</label>
+                </div>
+            </div>
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Nộp bài</button>
+        </form>
+        <div id="message" class="message">Cảm ơn bạn đã hoàn thành bài thi!</div>
+        <div class="footer">
+            <p>Design by GKNM</p>
+        </div>
+    </div>
+
+    <script>
+        let timerValue = 30;
+        const timerElement = document.getElementById('timer');
+        const message = document.getElementById('message');
+
+        function startTimer() {
+            const interval = setInterval(() => {
+                const minutes = Math.floor(timerValue / 60);
+                const seconds = timerValue % 60;
+                timerElement.textContent = `00:${seconds < 10 ? '0' : ''}${seconds}`;
+                timerValue--;
+
+                if (timerValue < 0) {
+                    clearInterval(interval);
+                    submitQuiz();  // Auto-submit when time is up
+                }
+            }, 1000);
+        }
+
+        function submitQuiz() {
+            var form = document.getElementById('quizForm');
+            var formData = new FormData(form);
+            var correctAnswers = {
+                q1: 'A',
+                q2: 'A',
+                q3: 'A',
+                q4: 'A',
+                q5: 'B',
+                q6: 'A',
+                q7: 'C',
+                q8: 'A',
+                q9: 'A',
+                q10: 'B'
+            };
+            
+            var userAnswers = {};
+            var correctCount = 0;
+
+            formData.forEach((value, key) => {
+                userAnswers[key] = value;
+                if (correctAnswers[key] === value) {
+                    correctCount++;
+                }
+            });
+
+            // Hiển thị thông báo
+            message.style.display = 'block';
+            
+            // Delay chuyển hướng để người dùng có thể đọc thông báo
+            setTimeout(() => {
+                window.location.href = 'result.html?correct=' + correctCount;
+            }, 2000);
+        }
+
+        // Bắt đầu đếm ngược khi trang được tải
+        window.onload = function() {
+            startTimer();
+        };
+    </script>
+</body>
+</html>

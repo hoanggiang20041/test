@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+<head>
+    <title>Trang web thi chứng chỉ online GKNM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background: url('images/banner1.jpg') no-repeat center center fixed; /* Sử dụng ảnh banner1 làm nền */
+            background-size: cover; /* Để ảnh nền phủ toàn bộ */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 12vh; /* Cỡ chữ lớn */
+            font-weight: 900; /* Độ dày của chữ */
+            color: #fff;
+            text-transform: uppercase; /* Chuyển chữ thành chữ hoa */
+            letter-spacing: 0.1em; /* Khoảng cách giữa các ký tự */
+            text-align: center;
+            text-shadow: 
+                1px 1px 0 #000, /* Bóng đổ đen nhẹ */
+                2px 2px 0 #000, /* Bóng đổ đen mạnh hơn */
+                3px 3px 5px rgba(0, 0, 0, 0.3); /* Hiệu ứng mờ 3D */
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Hiệu ứng phóng to và đổi màu */
+            padding: 20px;
+            border-radius: 20px; /* Bo tròn khung */
+            border: 5px solid rgba(255, 255, 255, 0.5); /* Khung viền mờ */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Đổ bóng mờ xung quanh chữ */
+        }
+
+        h1:hover {
+            transform: scale(1.2); /* Phóng to khi hover */
+            color: firebrick; /* Đổi màu chữ khi hover */
+        }
+
+        /* Thanh tiến trình */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0df;
+            border-radius: 25px;
+            margin-top: 20px;
+            height: 20px;
+            max-width: 600px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #76c7c0;
+            border-radius: 25px;
+            transition: width 0.5s;
+        }
+
+        .copyright {
+            position: absolute;
+            bottom: 10px; /* Đặt phần "Design by NGUYEN HOANG GIANG" ở cuối trang */
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .copyright p {
+            margin: 0;
+        }
+    </style>
+
+    <script>
+        function startProgress() {
+            var progressBar = document.getElementById("progress-bar");
+            var width = 0;
+            var interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    window.location.href = "login.html"; // Chuyển hướng khi thanh tiến trình đầy
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }, 50); // Mỗi lần tăng 1% sau 50ms
+        }
+
+        window.onload = function() {
+            startProgress();
+        };
+    </script>
+</head>
+
+<body>
+    <h1>THI CHỨNG CHỈ ONLINE GKNM</h1>
+
+    <!-- Thanh tiến trình -->
+    <div class="progress-container">
+        <div id="progress-bar" class="progress-bar"></div>
+    </div>
+
+    <div class="copyright">
+        <p>© 2024 | Design by NGUYEN HOANG GIANG</p>
+    </div>
+</body>
+</html>

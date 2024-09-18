@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hỗ Trợ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('images/banner1.jpg'); /* Đặt hình nền cho body */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #fff; /* Màu chữ nổi bật trên nền tối */
+        }
+        .navbar {
+            background-color: rgba(0, 123, 255, 0.8); /* Màu nền cho navbar */
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .banner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* Cho phép banner chiếm không gian còn lại của trang */
+            text-align: center;
+            padding: 50px 15px;
+        }
+        .circle-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .contact-item {
+            width: 200px;
+            text-align: center;
+            opacity: 0; /* Initially hide elements */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+        }
+        .contact-item:nth-child(1) {
+            animation-delay: 0.2s; /* Stagger animations */
+        }
+        .contact-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .contact-item:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        .contact-item:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        .contact-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-item img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .contact-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .contact-btn:hover {
+            background-color: #0056b3;
+        }
+        .name {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        .footer {
+            background-color: rgba(255, 255, 255, 0.8); /* Nền footer trong suốt */
+            padding: 10px;
+            text-align: center;
+            color: #777;
+            border-top: 1px solid #ddd;
+            position: relative;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="home.html">Trang Chủ</a>
+        <a href="hotro.html">Hỗ Trợ</a>
+    </div>
+
+    <div class="banner">
+        <div class="circle-container">
+            <div class="contact-item">
+                <img src="images/admin1.jpg" alt="Admin 1">
+                <a href="https://www.facebook.com/giang.101004/" class="contact-btn">Liên Hệ</a>
+                <div class="name">Hoàng Giang</div>
+            </div>
+            <div class="contact-item">
+                <img src="images/admin2.jpg" alt="Admin 2">
+                <a href="https://www.facebook.com/nhatkhanh.media" class="contact-btn">Liên Hệ</a>
+                <div class="name">Nhật Khánh</div>
+            </div>
+            <div class="contact-item">
+                <img src="images/admin3.jpg" alt="Admin 3">
+                <a href="https://www.facebook.com/profile.php?id=100035806943827" class="contact-btn">Liên Hệ</a>
+                <div class="name">Phạm Mẫn</div>
+            </div>
+            <div class="contact-item">
+                <img src="images/admin4.jpg" alt="Admin 4">
+                <a href="https://www.facebook.com/profile.php?id=100072272413298" class="contact-btn">Liên Hệ</a>
+                <div class="name">Hoài Nam</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2024 bản quyền thuộc GKNM
+    </div>
+</body>
+</html>

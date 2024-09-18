@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Hồ Sơ Cá Nhân</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        /* Basic reset */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        table,
+        ul {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and container styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .nav-items a,
+        .logout-btn {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .profile-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .upload-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .verification-message {
+            margin-top: 10px;
+        }
+
+        .verification-success {
+            color: #28a745;
+        }
+
+        .verification-fail {
+            color: #dc3545;
+        }
+
+        .document-verification,
+        .history-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-section h3 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .history-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history-section table,
+        .history-section th,
+        .history-section td {
+            border: 1px solid #ced4da;
+        }
+
+        .history-section th,
+        .history-section td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .history-section th {
+            background-color: #f1f1f1;
+        }
+
+        .history-section .action {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .history-section .action:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo" onclick="window.location.href='home.html'">GKNM</div>
+        <div class="nav-items">
+            <a href="home.html">Trang Chủ</a>
+            <a href="hotro.html">Hỗ trợ</a>
+            <a href="profile.html">Hồ Sơ</a>
+            <a href="gioithieu.html">Buổi Thi</a>
+            <button class="logout-btn" onclick="confirmLogout()">Đăng Xuất</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="profile-container">
+            <img src="images/default-avatar.jpg" alt="Ảnh Đại Diện" id="avatar">
+            <h2 id="fullName">Nguyễn Văn A</h2>
+            <p><strong>Email:</strong> <span id="email">nguyen.van.a@example.com</span></p>
+            <p><strong>Nơi Ở:</strong>
+                <select id="address" onchange="updateAddress()">
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                    <option value="Đà Nẵng">Đà Nẵng</option>
+                    <option value="Hải Phòng">Hải Phòng</option>
+                    <option value="Cần Thơ">Cần Thơ</option>
+                    <option value="An Giang">An Giang</option>
+                    <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                    <option value="Bạc Liêu">Bạc Liêu</option>
+                    <option value="Bắc Giang">Bắc Giang</option>
+                    <option value="Bắc Kạn">Bắc Kạn</option>
+                    <option value="Bắc Ninh">Bắc Ninh</option>
+                    <option value="Bến Tre">Bến Tre</option>
+                    <option value="Bình Định">Bình Định</option>
+                    <option value="Bình Dương">Bình Dương</option>
+                    <option value="Bình Phước">Bình Phước</option>
+                    <option value="Bình Thuận">Bình Thuận</option>
+                    <option value="Cà Mau">Cà Mau</option>
+                    <option value="Cao Bằng">Cao Bằng</option>
+                    <option value="Đắk Lắk">Đắk Lắk</option>
+                    <option value="Đắk Nông">Đắk Nông</option>
+                    <option value="Điện Biên">Điện Biên</option>
+                    <option value="Đồng Nai">Đồng Nai</option>
+                    <option value="Đồng Tháp">Đồng Tháp</option>
+                    <option value="Gia Lai">Gia Lai</option>
+                    <option value="Hà Giang">Hà Giang</option>
+                    <option value="Hà Nam">Hà Nam</option>
+                    <option value="Hà Tĩnh">Hà Tĩnh</option>
+                    <option value="Hậu Giang">Hậu Giang</option>
+                    <option value="Hòa Bình">Hòa Bình</option>
+                    <option value="Hưng Yên">Hưng Yên</option>
+                    <option value="Khánh Hòa">Khánh Hòa</option>
+                    <option value="Kiên Giang">Kiên Giang</option>
+                    <option value="Kon Tum">Kon Tum</option>
+                    <option value="Lai Châu">Lai Châu</option>
+                    <option value="Lâm Đồng">Lâm Đồng</option>
+                    <option value="Lạng Sơn">Lạng Sơn</option>
+                    <option value="Lào Cai">Lào Cai</option>
+                    <option value="Long An">Long An</option>
+                    <option value="Nam Định">Nam Định</option>
+                    <option value="Nghệ An">Nghệ An</option>
+                    <option value="Ninh Bình">Ninh Bình</option>
+                    <option value="Ninh Thuận">Ninh Thuận</option>
+                    <option value="Phú Thọ">Phú Thọ</option>
+                    <option value="Phú Yên">Phú Yên</option>
+                    <option value="Quảng Bình">Quảng Bình</option>
+                    <option value="Quảng Nam">Quảng Nam</option>
+                    <option value="Quảng Ngãi">Quảng Ngãi</option>
+                    <option value="Quảng Ninh">Quảng Ninh</option>
+                    <option value="Quảng Trị">Quảng Trị</option>
+                    <option value="Sóc Trăng">Sóc Trăng</option>
+                    <option value="Sơn La">Sơn La</option>
+                    <option value="Tây Ninh">Tây Ninh</option>
+                    <option value="Thái Bình">Thái Bình</option>
+                    <option value="Thái Nguyên">Thái Nguyên</option>
+                    <option value="Thanh Hóa">Thanh Hóa</option>
+                    <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                    <option value="Tiền Giang">Tiền Giang</option>
+                    <option value="Trà Vinh">Trà Vinh</option>
+                    <option value="Tuyên Quang">Tuyên Quang</option>
+                    <option value="Vĩnh Long">Vĩnh Long</option>
+                    <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                    <option value="Yên Bái">Yên Bái</option>
+
+                </select>
+            </p>
+            <input type="file" id="avatar-upload" class="upload-input" accept="image/*" style="display: none;"
+                onchange="previewAvatar()">
+            <button class="upload-btn" onclick="document.getElementById('avatar-upload').click()">Tải Ảnh Đại
+                Diện</button>
+            <p id="avatar-message" class="verification-message"></p>
+        </div>
+
+        <div class="document-verification">
+            <h3>Xác Thực CMND</h3>
+            <input type="file" id="cmnd-upload" accept="image/*">
+            <button onclick="submitVerification()">Gửi</button>
+            <p id="verification-message" class="verification-message"></p>
+        </div>
+
+        <div class="history-section">
+            <h3>Lịch Sử Đăng Nhập</h3>
+            <table id="login-history">
+                <thead>
+                    <tr>
+                        <th>Thời Gian</th>
+                        <th>Địa Chỉ IP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Historical data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="history-section">
+            <h3>Lịch Sử Thao Tác</h3>
+            <ul id="action-history">
+                <!-- Action history will be inserted here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            if (userData) {
+                document.getElementById('fullName').innerText = userData.fullName || 'Nguyễn Văn A';
+                document.getElementById('email').innerText = userData.email || 'nguyen.van.a@example.com';
+                document.getElementById('address').value = userData.address || 'Hà Nội';
+                if (userData.avatar) {
+                    document.getElementById('avatar').src = userData.avatar;
+                }
+                loadLoginHistory();
+                loadActionHistory();
+            }
+        };
+
+        function previewAvatar() {
+            const file = document.getElementById('avatar-upload').files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('avatar').src = e.target.result;
+
+                    let userData = JSON.parse(localStorage.getItem('userData')) || {};
+                    userData.avatar = e.target.result;
+                    localStorage.setItem('userData', JSON.stringify(userData));
+
+                    document.getElementById('avatar-message').style.display = 'block';
+                    document.getElementById('avatar-message').innerText = 'Ảnh đại diện đã được cập nhật!';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateAddress() {
+            const address = document.getElementById('address').value;
+            let userData = JSON.parse(localStorage.getItem('userData')) || {};
+            userData.address = address;
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+
+        function submitVerification() {
+            const file = document.getElementById('cmnd-upload').files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('verification-message').style.display = 'block';
+                    document.getElementById('verification-message').innerText = 'CMND đã được gửi đi!';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function loadLoginHistory() {
+            const loginHistory = JSON.parse(localStorage.getItem('loginHistory')) || [];
+            const tableBody = document.querySelector('#login-history tbody');
+            tableBody.innerHTML = loginHistory.map(entry => `
+                <tr>
+                    <td>${entry.time}</td>
+                    <td>${entry.ip}</td>
+                </tr>
+            `).join('');
+        }
+
+        function loadActionHistory() {
+            const actionHistory = JSON.parse(localStorage.getItem('actionHistory')) || [];
+            const actionList = document.getElementById('action-history');
+            actionList.innerHTML = actionHistory.map(entry => `
+                <li>${entry.time}: ${entry.action}</li>
+            `).join('');
+        }
+
+        function confirmLogout() {
+            if (confirm("Bạn có chắc chắn muốn đăng xuất?")) {
+                // Xử lý đăng xuất
+                alert("Đã đăng xuất!");
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

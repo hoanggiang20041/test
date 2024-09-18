@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+<head>
+    <title>Điều lệ trước khi thi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('images/banner1.jpg'); /* Thay đổi đường dẫn tới ảnh nền của bạn */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .intro-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Nền trắng mờ để nổi bật nội dung */
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .intro-container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #007bff;
+            font-weight: bold; /* Chữ đậm cho tiêu đề */
+        }
+
+        .intro-container p, .intro-container ul {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold; /* Chữ đậm cho đoạn văn */
+        }
+
+        ul {
+            list-style-type: disc;
+            text-align: left;
+            margin: 0 auto;
+            display: inline-block;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .btn-group {
+            margin-top: 30px;
+        }
+
+        .start-btn, .back-btn {
+            padding: 14px 28px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .start-btn:disabled {
+            background-color: #d6d6d6;
+            cursor: not-allowed;
+        }
+
+        .start-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .back-btn {
+            background-color: #6c757d;
+        }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .notification {
+            background-color: #fff7d1;
+            border: 1px solid #ffcc00;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            max-width: 300px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .notification p {
+            color: #666;
+            font-size: 14px;
+            flex: 1;
+            margin: 0;
+        }
+
+        .notification button {
+            padding: 8px 16px;
+            font-size: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .notification .allow-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .notification .allow-btn:hover {
+            background-color: #45a049;
+        }
+
+        .notification .deny-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .notification .deny-btn:hover {
+            background-color: #e53935;
+        }
+
+        .notification-close {
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f2f5;
+            color: #333;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .footer img {
+            width: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro-container">
+        <h1>Điều lệ trước khi thi</h1>
+        <p>Thời gian làm bài: 30 giây</p>
+        <p>Tổng số câu hỏi: 10</p>
+        <p>Nội quy thi:</p>
+        <ul>
+            <li>Không được sử dụng tài liệu.</li>
+            <li>Trả lời tất cả các câu hỏi.</li>
+            <li>Không được rời khỏi bài thi giữa chừng.</li>
+        </ul>
+
+        <div class="btn-group">
+            <button class="start-btn" id="start-button" disabled onclick="startQuiz()">Bắt đầu làm bài</button>
+            <button class="back-btn" onclick="goBack()">Quay lại</button>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <p>GKNM.com muốn truy cập vào máy ảnh của bạn để giám sát bài thi.</p>
+        <button class="allow-btn" onclick="allowAccess()">Cho phép</button>
+        <button class="deny-btn" onclick="denyAccess()">Từ chối</button>
+        <span class="notification-close" onclick="closeNotification()">&#10006;</span>
+    </div>
+
+    <div class="footer">
+        <p>Design by GKNM</p>
+    </div>
+
+    <script>
+        function loadProfile() {
+            const userName = localStorage.getItem("username") || "GiangDZ"; 
+            document.getElementById("profile-name").innerText = userName;
+        }
+
+        function closeNotification() {
+            document.getElementById("notification").style.display = "none";
+        }
+
+        function allowAccess() {
+            alert("Bạn đã cho phép GKNM.com truy cập vào máy ảnh.");
+            document.getElementById("start-button").disabled = false;
+            closeNotification();
+        }
+
+        function denyAccess() {
+            alert("Bạn đã từ chối quyền truy cập vào máy ảnh. Bạn sẽ không thể thi.");
+            closeNotification();
+            setTimeout(function() {
+                window.location.href = 'home.html';
+            }, 3000);
+        }
+
+        function startQuiz() {
+            window.location.href = 'test.html';
+        }
+
+        function goBack() {
+            window.location.href = 'home.html';
+        }
+
+        window.onload = loadProfile;
+    </script>
+</body>
+</html>

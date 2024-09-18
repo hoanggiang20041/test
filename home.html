@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Trang Chủ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: #495057;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .navbar .nav-items {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .navbar .nav-items a,
+        .navbar .nav-items button {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .navbar .nav-items a:hover,
+        .navbar .nav-items button:hover {
+            background-color: #0056b3;
+        }
+        .navbar .nav-items .logout-btn {
+            background-color: #dc3545;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .navbar .nav-items .logout-btn:hover {
+            background-color: #c82333;
+        }
+        .container {
+            margin-top: 80px;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 20px auto;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .container h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .container p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #6c757d;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            padding: 15px;
+        }
+        .post img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .post-content {
+            padding: 15px;
+        }
+        .post-title {
+            font-size: 24px;
+            margin: 0;
+            color: #333;
+        }
+        .post-body {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #666;
+        }
+        .like-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .like-btn:hover {
+            background-color: #0056b3;
+        }
+        .like-btn.liked {
+            background-color: #ff5722;
+        }
+        .like-btn:active {
+            transform: scale(0.95);
+        }
+        .share-btn {
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .share-btn:hover {
+            background-color: #138496;
+        }
+        .share-count {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+        .comments-section {
+            margin-top: 20px;
+        }
+        .comment {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .comment img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        .comment textarea {
+            width: 100%;
+            height: 60px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .comment button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .comment button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo" onclick="window.location.href='home.html'">GKNM</div>
+        <div class="nav-items">
+            <a href="home.html">Trang Chủ</a>
+            <a href="hotro.html" id="support-link">Hỗ Trợ</a>
+            <a href="profile.html" id="profile-link">Hồ Sơ</a>
+            <a href="gioithieu.html">Buổi Thi</a>
+            <button class="logout-btn" onclick="confirmLogout()">Đăng Xuất</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Chào Mừng Đến Với GKNM</h1>
+        <p>Chọn một trong các tùy chọn trên thanh điều hướng để tiếp tục.</p>
+
+        <!-- Bài viết 1 -->
+        <div class="post" data-post-id="1">
+            <img src="images/bai1.jpg" alt="Bài viết 1">
+            <div class="post-content">
+                <h2 class="post-title">Cách mạng tháng Tám năm 1945 - Sự kiện lịch sử vĩ đại của dân tộc Việt Nam</h2>
+                <p class="post-body">Cách đây 76 năm, từ ngày 14 đến 19/8/1945, dưới sự lãnh đạo của Đảng ta và Lãnh tụ Hồ Chí Minh, toàn dân...</p>
+                <button class="like-btn" onclick="toggleLike(this)">Thích</button>
+                <div class="share-count">Lượt Thích: <span class="like-count-value">100.000</span></div>
+                <button class="share-btn" onclick="sharePost(this)">Chia Sẻ</button>
+                <div class="share-count">Lượt chia sẻ: <span class="share-count-value">10.000</span></div>
+            </div>
+            <div class="comments-section">
+                <div class="comment">
+                    <img src="images/user.jpg" alt="User 1">
+                    <div>
+                        <strong>Nguyễn Văn An:</strong> Yêu đất nước Việt Nam tôi.
+                    </div>
+                </div>
+                <div class="comment">
+                    <img src="images/user.jpg" alt="User 2">
+                    <div>
+                        <strong>Trần Thị Bích:</strong> Bài viết thật sự rất hay.
+                    </div>
+                </div>
+                <div class="comment">
+                    <textarea placeholder="Viết bình luận..."></textarea>
+                    <button onclick="addComment(this)">Gửi</button>
+                </div>
+                <div class="comments-list"></div>
+            </div>
+        </div>
+
+        <!-- Bài viết 2 -->
+        <div class="post" data-post-id="2">
+            <img src="images/bai2.jpg" alt="Bài viết 2">
+            <div class="post-content">
+                <h2 class="post-title">4.000 Năm Văn Hiến, Bí mật lịch sử Việt</h2>
+                <p class="post-body">4.000 Năm Văn Hiến, Bí mật lịch sử Việt...</p>
+                <button class="like-btn" onclick="toggleLike(this)">Thích</button>
+                <div class="share-count">Lượt Thích: <span class="like-count-value">50.000</span></div>
+                <button class="share-btn" onclick="sharePost(this)">Chia Sẻ</button>
+                <div class="share-count">Lượt chia sẻ: <span class="share-count-value">5.000</span></div>
+            </div>
+            <div class="comments-section">
+                <div class="comment">
+                    <img src="images/user.jpg" alt="User 1">
+                    <div>
+                        <strong>Nguyễn Văn An:</strong> Bài viết rất chi tiết.
+                    </div>
+                </div>
+                <div class="comment">
+                    <img src="images/user.jpg" alt="User 2">
+                    <div>
+                        <strong>Trần Thị Bích:</strong> Cảm ơn vì thông tin hữu ích.
+                    </div>
+                </div>
+                <div class="comment">
+                    <textarea placeholder="Viết bình luận..."></textarea>
+                    <button onclick="addComment(this)">Gửi</button>
+                </div>
+                <div class="comments-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addComment(button) {
+            const commentSection = button.closest('.comments-section');
+            const commentTextarea = commentSection.querySelector('textarea');
+            const post = button.closest('.post');
+            const postId = post.getAttribute('data-post-id');
+            
+            const commentText = commentTextarea.value.trim();
+            if (commentText) {
+                // Lưu bình luận vào localStorage
+                let comments = JSON.parse(localStorage.getItem('comments')) || {};
+                if (!comments[postId]) comments[postId] = [];
+                comments[postId].push(commentText);
+                localStorage.setItem('comments', JSON.stringify(comments));
+                
+                // Cập nhật danh sách bình luận
+                fetchComments(postId);
+                commentTextarea.value = ''; // Xóa nội dung textarea
+            }
+        }
+
+        function fetchComments(postId) {
+            let comments = JSON.parse(localStorage.getItem('comments')) || {};
+            const commentList = document.querySelector(`.post[data-post-id="${postId}"] .comments-list`);
+            commentList.innerHTML = ''; // Xóa các bình luận hiện có
+
+            if (comments[postId]) {
+                comments[postId].forEach(comment => {
+                    const commentElement = document.createElement('div');
+                    commentElement.classList.add('comment');
+                    commentElement.innerHTML = `
+                        <img src="images/user.jpg" alt="User">
+                        <div>
+                            <strong>Người dùng:</strong> ${comment}
+                        </div>
+                    `;
+                    commentList.appendChild(commentElement);
+                });
+            }
+        }
+
+        function toggleLike(button) {
+            // Thay đổi trạng thái thích
+            const post = button.closest('.post');
+            const postId = post.getAttribute('data-post-id');
+            let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || {};
+            
+            if (likedPosts[postId]) {
+                // Nếu đã thích, hủy thích
+                button.classList.remove('liked');
+                button.textContent = 'Thích';
+                delete likedPosts[postId];
+            } else {
+                // Nếu chưa thích, thực hiện thích
+                button.classList.add('liked');
+                button.textContent = 'Đã Thích';
+                likedPosts[postId] = true;
+            }
+            localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+        }
+
+        function sharePost(button) {
+            const post = button.closest('.post');
+            const postId = post.getAttribute('data-post-id');
+            const shareCountElement = post.querySelector('.share-count-value');
+            let shareCount = parseInt(shareCountElement.textContent) || 0;
+            shareCountElement.textContent = shareCount + 1;
+        }
+
+        // Tải các bình luận và trạng thái thích khi trang được tải
+        document.querySelectorAll('.post').forEach(post => {
+            const postId = post.getAttribute('data-post-id');
+            fetchComments(postId);
+
+            // Cập nhật trạng thái thích từ localStorage
+            let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || {};
+            const likeButton = post.querySelector('.like-btn');
+            if (likedPosts[postId]) {
+                likeButton.classList.add('liked');
+                likeButton.textContent = 'Đã Thích';
+            } else {
+                likeButton.classList.remove('liked');
+                likeButton.textContent = 'Thích';
+            }
+        });
+
+        function confirmLogout() {
+            if (confirm("Bạn có chắc chắn muốn đăng xuất?")) {
+                // Xử lý đăng xuất ở đây
+                alert("Đăng xuất thành công!");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu</title>
+    <style>
+        #video {
+            border: 1px solid #ccc;
+            background-color: #000;
+            width: 640px;
+            height: 480px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Giới Thiệu</h1>
+        <video id="video" autoplay></video>
+        <a href="index.html">Quay lại Trang Chính</a>
+    </div>
+
+    <script>
+        async function requestCameraAccess() {
+            try {
+                // Yêu cầu quyền truy cập camera
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                
+                // Gán luồng video vào phần tử video
+                const video = document.getElementById('video');
+                video.srcObject = stream;
+            } catch (err) {
+                console.error('Lỗi khi truy cập camera: ', err);
+                alert('Không thể truy cập camera. Vui lòng kiểm tra quyền truy cập của trình duyệt.');
+            }
+        }
+
+        // Khởi chạy yêu cầu quyền truy cập camera khi trang được tải
+        document.addEventListener('DOMContentLoaded', requestCameraAccess);
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Chứng chỉ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        .download-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .download-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        img {
+            max-width: 50%; /* Giảm kích thước hình ảnh để vừa trang */
+            height: auto;
+            border: 1px solid #ddd; /* Thêm viền cho hình ảnh */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chứng chỉ</h1>
+        <!-- Đường dẫn đến hình ảnh chứng chỉ -->
+        <img id="chungchi" src="https://drive.google.com/uc?export=view&id=1K3cqCpufF_Ewy1ipR_UsaNyw_HvZ9BZX"alt="Chứng chỉ" />
+
+        <button id="downloadButton" class="download-button">Tải chứng chỉ</button>
+    </div>
+
+    <script>
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            var img = document.getElementById('chungchi');
+            var link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'chungchi.jpg'; // Đảm bảo đúng định dạng tệp
+            link.click();
+        });
+    </script>
+</body>
+</html>

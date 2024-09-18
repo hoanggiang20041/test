@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background: url('images/banner1.jpg') no-repeat center center fixed; /* Use banner1 as background */
+            background-size: cover; /* Cover the whole page */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: 0.5px;
+            margin: 20px 0;
+        }
+
+        span {
+            font-size: 12px;
+        }
+
+        a {
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+
+        /* Container styling */
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        /* Form styling */
+        .form-container form {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .form-container input {
+            background-color: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+            border-radius: 20px; /* Rounded corners for inputs */
+        }
+
+        .form-container button {
+            border-radius: 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 12px 45px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container button:focus {
+            outline: none;
+            transform: scale(1.05);
+        }
+
+        /* Positioning of form containers */
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* Overlay container */
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .overlay {
+            background-color: #ff416c;
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 0;
+            color: #ffffff;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            box-sizing: border-box; /* Ensure padding does not affect total size */
+        }
+
+        /* Exact alignment for overlay panels */
+        .overlay-left {
+            left: 0;
+        }
+
+        .overlay-right {
+            right: 0;
+        }
+
+        /* Ensure title and content are aligned properly */
+        .overlay-panel h1 {
+            margin: 0;
+            font-size: 2rem; /* Adjust title size if needed */
+        }
+
+        .overlay-panel p {
+            margin: 20px 0; /* Adjust spacing between title and content */
+        }
+
+        .overlay-panel button {
+            margin-top: 50px; /* Space between content and button */
+            border-radius: 100px;
+            border: none;
+            background-color: #ffffff;
+            color: #ff416c;
+            font-size: 16px;
+            padding: 12px 45px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .overlay-panel button:hover {
+            background-color: #f1f1f1;
+        }
+
+        .overlay-panel button:focus {
+            outline: none;
+            transform: scale(1.05);
+        }
+
+        /* Panel activation */
+        .container.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+        }
+
+        .container.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+        }
+
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h1>Đăng kí tài khoản</h1>
+                <input type="text" id="fullName" placeholder="Họ và tên" required />
+                <input type="email" id="regEmail" placeholder="Email" required />
+                <input type="password" id="regPassword" placeholder="Mật khẩu" required />
+                <button type="submit">Đăng kí</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h1>Đăng nhập</h1>
+                <input type="email" id="loginEmail" placeholder="Email" required />
+                <input type="password" id="loginPassword" placeholder="Mật khẩu" required />
+                <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Bạn đã trở lại!</h1>
+                    <p>Hãy đăng nhập vào để thi</p>
+                    <button class="ghost" id="signIn">Đăng nhập</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Chào bạn!</h1>
+                    <p>Hãy đăng ký để làm bài thi đầu tiên nào</p>
+                    <button class="ghost" id="signUp">Đăng kí</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        const signUpForm = document.getElementById('signUpForm');
+        const signInForm = document.getElementById('signInForm');
+
+        // Toggle between sign up and sign in forms
+        signUpButton.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+        });
+
+        // Handle sign up form submission
+        signUpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+
+            // Save registration details in localStorage
+            localStorage.setItem('userData', JSON.stringify({ fullName, email, password }));
+            
+            alert('Đăng kí tài khoản thành công!');
+            container.classList.remove('right-panel-active');
+        });
+
+        // Handle sign in form submission
+        signInForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Retrieve user data from localStorage
+            const userData = JSON.parse(localStorage.getItem('userData'));
+
+            if (userData && userData.email === email && userData.password === password) {
+                alert('Đăng nhập thành công!');
+                window.location.href = 'home.html'; // Redirect to profile page
+            } else {
+                alert('Email hoặc mật khẩu không đúng.');
+            }
+        });
+    </script>
+</body>
+</html>
